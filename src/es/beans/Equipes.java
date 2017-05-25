@@ -8,6 +8,7 @@ package es.beans;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Equipes implements Serializable {
     @Id
     private int codEqu;
     private String descricao;
+    @OneToOne
     private int codGrupo;
     private String cidade;
     private String estado;

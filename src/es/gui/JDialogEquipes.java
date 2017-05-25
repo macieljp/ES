@@ -5,6 +5,14 @@
  */
 package es.gui;
 
+import es.beans.Equipes;
+import es.conecxao.TransactionUtil;
+import es.dao.DaoEquipes;
+import es.util.Util;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author macieljp
@@ -28,67 +36,209 @@ public class JDialogEquipes extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        tfIdGrupo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        tfCidade = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        tfEstado = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        tfEmail = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        tfResponsavel = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        tfId = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        tfDescricao = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jbCancelar = new javax.swing.JButton();
+        jbLimpar = new javax.swing.JButton();
+        jbCadastrar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Equipes");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Cadastro de Equipes");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+
+        tfIdGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdGrupoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tfIdGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 120, -1));
+
+        jLabel2.setText("Cod Grupo");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+        jPanel1.add(tfCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 120, -1));
+
+        jLabel3.setText("Cidade:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 20));
+        jPanel1.add(tfEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 120, -1));
+
+        jLabel4.setText("Estado:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, 20));
+
+        tfEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEmailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 120, -1));
+
+        jLabel5.setText("E-mail:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, 20));
+        jPanel1.add(tfResponsavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 120, -1));
+
+        jLabel6.setText("Responsavel:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 140, 70, 20));
+        jPanel1.add(tfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 120, -1));
+
+        jLabel7.setText("Id:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
+        jPanel1.add(tfDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 120, -1));
+
+        jLabel8.setText("Descrição:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
+
+        jbCancelar.setBackground(new java.awt.Color(255, 51, 0));
+        jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+
+        jbLimpar.setBackground(new java.awt.Color(255, 204, 51));
+        jbLimpar.setText("Limpar");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimparActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+
+        jbCadastrar.setBackground(new java.awt.Color(0, 255, 51));
+        jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 400, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 52, 400, 10));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         setSize(new java.awt.Dimension(416, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDialogEquipes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDialogEquipes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDialogEquipes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDialogEquipes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void tfIdGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdGrupoActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JDialogEquipes dialog = new JDialogEquipes(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void tfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEmailActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        novo();
+    }//GEN-LAST:event_jbLimparActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        if (Util.imprimirConfirmacao("Deseja Salvar")) {
+            salvar();
+        }
+    }//GEN-LAST:event_jbCadastrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton jbCadastrar;
+    private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbLimpar;
+    private javax.swing.JTextField tfCidade;
+    private javax.swing.JTextField tfDescricao;
+    private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfEstado;
+    private javax.swing.JTextField tfId;
+    private javax.swing.JTextField tfIdGrupo;
+    private javax.swing.JTextField tfResponsavel;
     // End of variables declaration//GEN-END:variables
+
+    private void salvar() {
+        if (verificarCampos()) {
+            Equipes equipe = new Equipes();
+            if (!tfId.getText().isEmpty()) {  //verifica se o campo Codigo esta vazio
+                equipe.setCodEqu(Integer.parseInt(tfId.getText()));
+            }
+
+            equipe.setCidade(tfCidade.getText());
+            equipe.setDescricao(tfDescricao.getText());
+            equipe.setEmail(tfEmail.getText());
+            equipe.setEstado(tfEstado.getText());
+            equipe.setCodGrupo(Integer.valueOf(tfIdGrupo.getText()));
+            equipe.setResponsavel(tfResponsavel.getText());
+
+            TransactionUtil.beginTransaction();
+            try {
+                new DaoEquipes().persistir(equipe);
+                TransactionUtil.commit();
+            } catch (Exception ex) {
+                TransactionUtil.rollback();
+                Logger.getLogger(JDialogJogadores.class.getName()).log(Level.SEVERE, null, ex);//erro
+            }
+
+            novo();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Contem campo vazio ou tipo incorreto de dado !");
+        }
+    }
+
+    private void novo() {
+
+        tfId.setText(null);
+        tfCidade.setText(null);
+        tfDescricao.setText(null);
+        tfEmail.setText(null);
+        tfEstado.setText(null);
+        tfIdGrupo.setText(null);
+        tfResponsavel.setText(null);
+
+    }
+
+    protected boolean verificarCampos() {
+        return !(!tfId.getText().isEmpty() && !tfCidade.getText().isEmpty()
+                && !tfDescricao.getText().isEmpty() && !tfEmail.getText().isEmpty()
+                && !tfEstado.getText().isEmpty() && !tfIdGrupo.getText().isEmpty()
+                && !tfResponsavel.getText().isEmpty());
+
+    }
+
 }

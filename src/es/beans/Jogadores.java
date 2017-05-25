@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -37,7 +38,9 @@ public class Jogadores implements Serializable {
     private float altura;
     private int tamCalcado;
     private String tamCamisa;
+    @OneToOne
     private int codNac;
+    @OneToOne
     private int codEquipe;
 
     public Jogadores() {

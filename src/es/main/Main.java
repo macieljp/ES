@@ -5,8 +5,8 @@
  */
 package es.main;
 
-import es.gui.PrincipalJFrame;
-import es.util.Util;
+import es.conecxao.CriarBanco;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,8 +14,10 @@ import es.util.Util;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        Util.abrirJFrameCentralizado(new PrincipalJFrame());
+    public static void main(String[] args) throws SQLException {
+
+        CriarBanco bd = new CriarBanco();
+        bd.getClass();
     }
 
 }

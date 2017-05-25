@@ -5,6 +5,11 @@
  */
 package es.gui;
 
+import es.beans.Nacionalidades;
+import es.conecxao.TransactionUtil;
+import es.dao.DaoNacionalidades;
+import es.util.Util;
+
 /**
  *
  * @author macieljp
@@ -13,6 +18,9 @@ public class JDialogNacionalidades extends javax.swing.JDialog {
 
     /**
      * Creates new form JDialogNacionalidades
+     *
+     * @param parent
+     * @param modal
      */
     public JDialogNacionalidades(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -28,67 +36,140 @@ public class JDialogNacionalidades extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        tfId = new javax.swing.JTextField();
+        jlId = new javax.swing.JLabel();
+        tfDescricao = new javax.swing.JTextField();
+        jlDescricao = new javax.swing.JLabel();
+        jbCancelar = new javax.swing.JButton();
+        jbLimpar = new javax.swing.JButton();
+        jtCadastrar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Nacionalidades");
         setResizable(false);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Cadastro de Nacionalidade");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+        jPanel1.add(tfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 120, -1));
+
+        jlId.setText("Id:");
+        jPanel1.add(jlId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 20));
+        jPanel1.add(tfDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 120, -1));
+
+        jlDescricao.setText("Descrição:");
+        jPanel1.add(jlDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 20));
+
+        jbCancelar.setBackground(new java.awt.Color(255, 51, 0));
+        jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+
+        jbLimpar.setBackground(new java.awt.Color(255, 204, 51));
+        jbLimpar.setText("Limpar");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimparActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+
+        jtCadastrar.setBackground(new java.awt.Color(0, 255, 51));
+        jtCadastrar.setText("Cadastrar");
+        jtCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtCadastrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 400, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 52, 400, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(416, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDialogNacionalidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDialogNacionalidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDialogNacionalidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDialogNacionalidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JDialogNacionalidades dialog = new JDialogNacionalidades(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        novo();
+    }//GEN-LAST:event_jbLimparActionPerformed
+
+    private void jtCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCadastrarActionPerformed
+        if (Util.imprimirConfirmacao("Deseja Salvar")) {
+            salvar();
+        }
+    }//GEN-LAST:event_jtCadastrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbLimpar;
+    private javax.swing.JLabel jlDescricao;
+    private javax.swing.JLabel jlId;
+    private javax.swing.JButton jtCadastrar;
+    private javax.swing.JTextField tfDescricao;
+    private javax.swing.JTextField tfId;
     // End of variables declaration//GEN-END:variables
+
+    private void salvar() {
+        if (verificarCampos()) {
+
+            Nacionalidades nacionalidade = new Nacionalidades();
+            nacionalidade.setCodNac(Integer.valueOf(tfId.getText()));
+            nacionalidade.setDescricao(tfDescricao.getText());
+
+            TransactionUtil.beginTransaction();
+            try {
+                new DaoNacionalidades().persistir(nacionalidade);
+                TransactionUtil.commit();
+                novo();
+            } catch (Exception e) {
+                e.getMessage();
+            }
+
+        }
+    }
+
+    private void novo() {
+
+        tfId.setText(null);
+        tfDescricao.setText(null);
+    }
+
+    protected boolean verificarCampos() {
+        return !(!tfId.getText().isEmpty() && !tfDescricao.getText().isEmpty());
+    }
 }
